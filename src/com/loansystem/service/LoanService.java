@@ -20,16 +20,8 @@ import java.util.concurrent.PriorityBlockingQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Core business logic.
- *  - Week 10: LinkedHashMap (all applications), PriorityBlockingQueue (processing queue),
- *             EnumMap (statistics), List (listeners / reports)
- *  - Week 7 : two background worker threads that process queued applications
- *  - Week 11: logging of every important action
- */
 public class LoanService {
 
-    /** Week 5/12 - callback interface used by the UI to hear about status changes. */
     public interface ProcessingListener {
         void onStatusChanged(LoanApplication application);
     }
@@ -50,7 +42,6 @@ public class LoanService {
         startWorkers(2);
     }
 
-    // ------------------------------------------------------------------ setup
     private void loadSavedData() {
         try {
             for (LoanApplication app : fileManager.load()) {
@@ -59,7 +50,7 @@ public class LoanService {
                 idCounter = Math.max(idCounter, number);
                 if (app.getStatus() == ApplicationStatus.SUBMITTED
                         || app.getStatus() == ApplicationStatus.UNDER_REVIEW) {
-                    queue.add(app);                      // unfinished work is re-queued
+                    queue.add(app);                     
                 }
             }
         } catch (IOException | NumberFormatException e) {
@@ -76,13 +67,12 @@ public class LoanService {
         }
     }
 
-    /** Week 7 - Runnable executed by each worker thread. */
     private class Worker implements Runnable {
         @Override
         public void run() {
             while (running) {
                 try {
-                    LoanApplication app = queue.take();      // blocks until work arrives
+                    LoanApplication app = queue.take();
                     process(app);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
@@ -96,7 +86,7 @@ public class LoanService {
         log.info("Processing " + app.getAppId() + " (" + app.getApplicant().getName() + ")");
         app.setStatus(ApplicationStatus.UNDER_REVIEW, "Verifying documents and credit history...");
         fire(app);
-        Thread.sleep(2500 + random.nextInt(1500));           // simulate review time
+        Thread.sleep(2500 + random.nextInt(1500));           
 
         try {
             app.getLoan().checkEligibility(app.getApplicant());
@@ -117,12 +107,11 @@ public class LoanService {
         fire(app);
     }
 
-    // -------------------------------------------------------------- operations
     public LoanApplication submit(Applicant applicant, Loan loan) {
         LoanApplication app;
         synchronized (this) {
             String id;
-            do {                                              // do-while: guarantee a unique ID
+            do {                                             
                 idCounter++;
                 id = "LN" + idCounter;
             } while (applications.containsKey(id));
@@ -169,7 +158,6 @@ public class LoanService {
         return total;
     }
 
-    /** Week 1 - looping: builds the month-by-month repayment schedule. */
     public static List<double[]> buildSchedule(double principal, double annualRate, int months) {
         List<double[]> rows = new ArrayList<>();
         double emi = Loan.calculateEMI(principal, annualRate, months);
@@ -184,7 +172,6 @@ public class LoanService {
         return rows;
     }
 
-    // ------------------------------------------------------------------ misc
     public void addListener(ProcessingListener listener) {
         listeners.add(listener);
     }
