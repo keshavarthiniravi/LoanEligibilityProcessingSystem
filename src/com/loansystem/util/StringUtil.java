@@ -1,10 +1,8 @@
 package com.loansystem.util;
 
-/** Week 9 - String handling helpers (split, StringBuilder, format, replace...). */
 public final class StringUtil {
     private StringUtil() { }
 
-    /** "sathviga s" -> "Sathviga S" */
     public static String toTitleCase(String text) {
         String[] words = text.trim().split("\\s+");
         StringBuilder sb = new StringBuilder();
@@ -24,7 +22,6 @@ public final class StringUtil {
         return String.format("Rs. %,.2f", value);
     }
 
-    /** Removes characters that would break the pipe-delimited data file. */
     public static String sanitize(String text) {
         if (text == null) {
             return "";
