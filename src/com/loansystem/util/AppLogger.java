@@ -12,7 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
-/** Week 11 - Central logging (console + logs/loan_system.log). */
 public final class AppLogger {
     private static final Logger LOGGER = Logger.getLogger("LoanSystem");
 
