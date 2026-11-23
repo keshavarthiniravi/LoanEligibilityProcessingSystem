@@ -27,7 +27,6 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 
-/** New loan application form with a live EMI / eligibility preview. */
 public class ApplyPanel extends JPanel implements Refreshable {
     private final LoanService service;
     private final Runnable onSubmitted;
@@ -83,7 +82,6 @@ public class ApplyPanel extends JPanel implements Refreshable {
         return l;
     }
 
-    // ------------------------------------------------------------------ layout
     private JPanel buildForm() {
         JPanel card = Theme.card();
         card.setLayout(new BorderLayout(0, 14));
@@ -181,7 +179,6 @@ public class ApplyPanel extends JPanel implements Refreshable {
         p.add(value);
     }
 
-    // ------------------------------------------------------------------ events (Week 12)
     private void wireEvents() {
         digitsOnly(ageF, 2);
         digitsOnly(incomeF, 9);
@@ -245,7 +242,6 @@ public class ApplyPanel extends JPanel implements Refreshable {
         }
     }
 
-    /** Key listener that blocks non-digits and limits the length. */
     private static void digitsOnly(JTextField field, int maxLength) {
         field.addKeyListener(new KeyAdapter() {
             @Override
@@ -262,7 +258,6 @@ public class ApplyPanel extends JPanel implements Refreshable {
         });
     }
 
-    // ------------------------------------------------------------------ logic
     private Applicant buildApplicant() throws InvalidInputException {
         try {
             return new Applicant(nameF.getText(), Integer.parseInt(ageF.getText().trim()),
@@ -364,6 +359,5 @@ public class ApplyPanel extends JPanel implements Refreshable {
 
     @Override
     public void refresh() {
-        // nothing to reload - the form keeps its own state
     }
 }
