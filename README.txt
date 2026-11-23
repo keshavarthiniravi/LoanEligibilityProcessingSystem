@@ -28,30 +28,30 @@ FILES CREATED AT RUN TIME
   reports/*.txt           - exported reports
 
 WEEK-WISE TOPIC MAP (where each topic is used)
-  Week 1  Looping constructs   LoanService.buildSchedule (for), DashboardPanel.refresh (while + for-each),
-                               LoanService.submit (do-while), BarChart.paintComponent (indexed for)
-  Week 2  Encapsulation        Applicant, Loan (private fields + validated getters/setters)
-  Week 3  Inheritance          Loan -> EducationLoan / HomeLoan / PersonalLoan ; MainFrame extends JFrame
-  Week 4  Polymorphism         Overriding: getInterestRate, maxEligibleAmount, collectReasons ;
-                               Overloading: Loan.calculateEMI(Applicant) / calculateEMI(double,double,int) ;
-                               LoanFactory returns Loan references
-  Week 5  Interfaces           Eligible, Payable (default method), Reportable (default method),
-                               Refreshable, LoanService.ProcessingListener
-  Week 6  Exceptions           Custom: InvalidInputException, LoanNotEligibleException,
-                               ApplicationNotFoundException ; Built-in: NumberFormatException, IOException,
-                               InterruptedException, RuntimeException (multi-catch, try-with-resources)
-  Week 7  Threading            LoanService.Worker (2 worker threads + PriorityBlockingQueue),
-                               MainFrame.startClock (clock thread), SwingUtilities.invokeLater
-  Week 8  User-defined package com.loansystem.{model, exception, service, ui, util}
-  Week 9  I/O + Strings        FileManager (BufferedReader/Writer, split, join, format, export report),
-                               StringUtil (StringBuilder, regex, replace, substring, title-case)
-  Week 10 Collections          LinkedHashMap (applications), PriorityBlockingQueue, EnumMap (statistics),
-                               ArrayList, CopyOnWriteArrayList, Comparator / Comparable
-  Week 11 Logging              util.AppLogger (java.util.logging, console + file handler)
-  Week 12 Event handling       ActionListener, KeyListener (digits-only, live preview, Enter key),
-                               MouseListener (hover), ItemListener, ChangeListener (sliders),
-                               ListSelectionListener, WindowListener
-  Week 13 Application          Complete Swing application tying everything together
+  1  Looping constructs   LoanService.buildSchedule (for), DashboardPanel.refresh (while + for-each),
+                          LoanService.submit (do-while), BarChart.paintComponent (indexed for)
+  2  Encapsulation        Applicant, Loan (private fields + validated getters/setters)
+  3  Inheritance          Loan -> EducationLoan / HomeLoan / PersonalLoan ; MainFrame extends JFrame
+  4  Polymorphism         Overriding: getInterestRate, maxEligibleAmount, collectReasons ;
+                          Overloading: Loan.calculateEMI(Applicant) / calculateEMI(double,double,int) ;
+                          LoanFactory returns Loan references
+  5  Interfaces           Eligible, Payable (default method), Reportable (default method),
+                          Refreshable, LoanService.ProcessingListener
+  6  Exceptions           Custom: InvalidInputException, LoanNotEligibleException,
+                          ApplicationNotFoundException ; Built-in: NumberFormatException, IOException,
+                          InterruptedException, RuntimeException (multi-catch, try-with-resources)
+  7  Threading            LoanService.Worker (2 worker threads + PriorityBlockingQueue),
+                          MainFrame.startClock (clock thread), SwingUtilities.invokeLater
+  8  User-defined package com.loansystem.{model, exception, service, ui, util}
+  9  I/O + Strings        FileManager (BufferedReader/Writer, split, join, format, export report),
+                          StringUtil (StringBuilder, regex, replace, substring, title-case)
+  10 Collections          LinkedHashMap (applications), PriorityBlockingQueue, EnumMap (statistics),
+                          ArrayList, CopyOnWriteArrayList, Comparator / Comparable
+  11 Logging              util.AppLogger (java.util.logging, console + file handler)
+  12 Event handling       ActionListener, KeyListener (digits-only, live preview, Enter key),
+                          MouseListener (hover), ItemListener, ChangeListener (sliders),
+                          ListSelectionListener, WindowListener
+  13 Application          Complete Swing application tying everything together
 
 LOAN RULES
   Type       Base rate  Min income  Min credit  Max tenure  Age      Max amount
