@@ -20,7 +20,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-/** EMI calculator with a full month-by-month amortisation schedule. */
 public class EmiPanel extends JPanel implements Refreshable {
     private final JTextField principalF = Theme.input();
     private final JTextField rateF = Theme.input();
@@ -112,7 +111,6 @@ public class EmiPanel extends JPanel implements Refreshable {
         return p;
     }
 
-    /** Called from the Applications screen. */
     public void showFor(LoanApplication app) {
         Loan loan = app.getLoan();
         principalF.setText(String.valueOf((long) loan.getPrincipal()));
@@ -142,7 +140,7 @@ public class EmiPanel extends JPanel implements Refreshable {
                 model.addRow(new Object[]{(int) r[0], String.format("%,.2f", r[1]), String.format("%,.2f", r[2]),
                         String.format("%,.2f", r[3]), String.format("%,.2f", r[4])});
             }
-        } catch (IllegalArgumentException e) {       // also covers NumberFormatException
+        } catch (IllegalArgumentException e) {       
             JOptionPane.showMessageDialog(this, "Please enter valid positive numbers.\n(" + e.getMessage() + ")",
                     "Invalid Input", JOptionPane.ERROR_MESSAGE);
         }
@@ -150,6 +148,5 @@ public class EmiPanel extends JPanel implements Refreshable {
 
     @Override
     public void refresh() {
-        // static screen
     }
 }
