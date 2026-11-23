@@ -5,7 +5,6 @@ import com.loansystem.util.AppLogger;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-/** Entry point of the Loan Eligibility and Processing System. */
 public class Main {
     public static void main(String[] args) {
         try {
