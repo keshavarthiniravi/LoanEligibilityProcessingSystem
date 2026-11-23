@@ -21,7 +21,6 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.table.JTableHeader;
 
-/** Colours, fonts and reusable styled components. */
 public final class Theme {
     public static final Color NAVY = new Color(0x1B2A49);
     public static final Color INDIGO = new Color(0x3B3F8F);
@@ -110,7 +109,6 @@ public final class Theme {
         h.setPreferredSize(new Dimension(100, 34));
     }
 
-    /** Rounded coloured button with hover effect (Week 12: MouseListener). */
     public static class RoundedButton extends JButton {
         private final Color base;
         private boolean hover;
@@ -152,7 +150,6 @@ public final class Theme {
         }
     }
 
-    /** Panel with a two-colour diagonal gradient background. */
     public static class GradientPanel extends JPanel {
         private final Color from;
         private final Color to;
