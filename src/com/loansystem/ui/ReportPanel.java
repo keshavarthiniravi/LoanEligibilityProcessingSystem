@@ -22,7 +22,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-/** Text report generator with export to the reports/ folder. */
 public class ReportPanel extends JPanel implements Refreshable {
     private final LoanService service;
     private final JTextArea area = new JTextArea();
@@ -129,6 +128,5 @@ public class ReportPanel extends JPanel implements Refreshable {
 
     @Override
     public void refresh() {
-        // report is generated on demand
     }
 }
