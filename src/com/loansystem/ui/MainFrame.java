@@ -27,11 +27,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-/**
- * Week 3 - Inheritance: the main window extends JFrame.
- * Week 7 - Threading: a daemon thread keeps the clock running.
- * Week 12 - Event handling: window, mouse and action listeners.
- */
 public class MainFrame extends JFrame implements LoanService.ProcessingListener {
     private final LoanService service = new LoanService(new FileManager());
     private final CardLayout cards = new CardLayout();
@@ -191,7 +186,6 @@ public class MainFrame extends JFrame implements LoanService.ProcessingListener 
         }
     }
 
-    /** Called from worker threads - hop onto the Swing thread before touching the UI. */
     @Override
     public void onStatusChanged(LoanApplication app) {
         SwingUtilities.invokeLater(() -> {
@@ -201,7 +195,6 @@ public class MainFrame extends JFrame implements LoanService.ProcessingListener 
         });
     }
 
-    /** Sidebar button with hover and active highlighting. */
     private class NavButton extends JButton {
         private final String key;
         private final Color accent;
