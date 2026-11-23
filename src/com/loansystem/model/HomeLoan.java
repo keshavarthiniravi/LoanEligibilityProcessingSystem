@@ -4,7 +4,6 @@ import com.loansystem.exception.InvalidInputException;
 import com.loansystem.util.StringUtil;
 import java.util.List;
 
-/** Week 3 - Inheritance: HomeLoan extends Loan. */
 public class HomeLoan extends Loan {
     private double propertyValue;
 
@@ -37,7 +36,7 @@ public class HomeLoan extends Loan {
     @Override
     public double getInterestRate(Applicant applicant) {
         double rate = super.getInterestRate(applicant);
-        return getPrincipal() > 5_000_000 ? rate + 0.25 : rate;    // jumbo-loan surcharge
+        return getPrincipal() > 5_000_000 ? rate + 0.25 : rate; 
     }
 
     @Override
