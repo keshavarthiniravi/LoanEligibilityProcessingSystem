@@ -3,7 +3,6 @@ package com.loansystem.model;
 import com.loansystem.exception.InvalidInputException;
 import com.loansystem.util.StringUtil;
 
-/** Week 2 - Encapsulation: private fields, validated setters, public getters. */
 public class Applicant {
     private String name;
     private int age;
