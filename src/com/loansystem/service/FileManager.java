@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/** Week 9 - File I/O combined with String handling (split, join, format, StringBuilder). */
 public class FileManager {
     private static final String HEADER =
             "appId|name|age|income|credit|phone|email|type|amount|months|extra|status|remarks|submitted";
@@ -45,7 +44,7 @@ public class FileManager {
             return list;
         }
         try (BufferedReader reader = Files.newBufferedReader(dataFile)) {
-            reader.readLine();                       // skip header
+            reader.readLine();                       
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) {
@@ -87,7 +86,6 @@ public class FileManager {
                 LocalDateTime.parse(f[13]));
     }
 
-    /** Writes a text report and returns the created file path. */
     public Path exportReport(String content) throws IOException {
         Files.createDirectories(reportDir);
         String stamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
