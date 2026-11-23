@@ -6,12 +6,8 @@ import com.loansystem.util.StringUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Weeks 2-5: abstract parent class (encapsulation + inheritance base),
- * implements the Eligible and Payable interfaces.
- */
 public abstract class Loan implements Eligible, Payable {
-    public static final double MAX_EMI_RATIO = 0.5;   // EMI must be <= 50% of income
+    public static final double MAX_EMI_RATIO = 0.5;   
 
     private final String loanType;
     private double principal;
@@ -23,7 +19,6 @@ public abstract class Loan implements Eligible, Payable {
         setTenureMonths(tenureMonths);
     }
 
-    // ---------- encapsulated fields ----------
     public String getLoanType() {
         return loanType;
     }
@@ -51,7 +46,6 @@ public abstract class Loan implements Eligible, Payable {
         this.tenureMonths = tenureMonths;
     }
 
-    // ---------- abstract policy (each loan type overrides these) ----------
     public abstract double getBaseInterestRate();
 
     public abstract double getMinIncome();
@@ -70,8 +64,6 @@ public abstract class Loan implements Eligible, Payable {
 
     public abstract String getExtraValue();
 
-    // ---------- polymorphic behaviour ----------
-    /** Interest rate after credit-score adjustment (subclasses may refine it). */
     public double getInterestRate(Applicant applicant) {
         double rate = getBaseInterestRate();
         int score = applicant.getCreditScore();
@@ -90,7 +82,6 @@ public abstract class Loan implements Eligible, Payable {
         return applicant.getMonthlyIncome() * getIncomeMultiplier();
     }
 
-    // ---------- method overloading: two calculateEMI versions ----------
     @Override
     public double calculateEMI(Applicant applicant) {
         return calculateEMI(principal, getInterestRate(applicant), tenureMonths);
@@ -119,7 +110,6 @@ public abstract class Loan implements Eligible, Payable {
         }
     }
 
-    /** Subclasses override this, call super, and add their own rules. */
     protected void collectReasons(Applicant a, List<String> reasons) {
         if (a.getAge() < getMinAge() || a.getAge() > getMaxAge()) {
             reasons.add("Age must be between " + getMinAge() + " and " + getMaxAge()
