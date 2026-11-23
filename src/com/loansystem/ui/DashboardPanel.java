@@ -20,7 +20,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/** Home screen: statistic tiles, bar chart and recent applications. */
 public class DashboardPanel extends JPanel implements Refreshable {
     private final LoanService service;
     private final JLabel[] tileValues = new JLabel[4];
@@ -109,7 +108,7 @@ public class DashboardPanel extends JPanel implements Refreshable {
     public void refresh() {
         Map<ApplicationStatus, Integer> counts = service.countByStatus();
         int total = 0;
-        for (int value : counts.values()) {          // Week 1: for-each loop
+        for (int value : counts.values()) {          
             total += value;
         }
         tileValues[0].setText(String.valueOf(total));
@@ -123,7 +122,7 @@ public class DashboardPanel extends JPanel implements Refreshable {
         List<LoanApplication> all = service.getAll();
         int shown = 0;
         int index = all.size() - 1;
-        while (index >= 0 && shown < 6) {            // Week 1: while loop (newest first)
+        while (index >= 0 && shown < 6) {
             LoanApplication app = all.get(index);
             JLabel row = new JLabel("<html><b>" + app.getAppId() + "</b> &nbsp;" + app.getApplicant().getName()
                     + " &nbsp;<font color='gray'>" + app.getLoan().getLoanType() + " - "
@@ -147,7 +146,6 @@ public class DashboardPanel extends JPanel implements Refreshable {
         return String.format("#%02x%02x%02x", c.getRed(), c.getGreen(), c.getBlue());
     }
 
-    /** Custom-painted bar chart. */
     private static class BarChart extends JPanel {
         private Map<ApplicationStatus, Integer> data;
 
@@ -176,7 +174,7 @@ public class DashboardPanel extends JPanel implements Refreshable {
             int slot = getWidth() / statuses.length;
             int baseY = getHeight() - 30;
             int chartH = getHeight() - 70;
-            for (int i = 0; i < statuses.length; i++) {      // Week 1: indexed for loop
+            for (int i = 0; i < statuses.length; i++) {      
                 int value = data.get(statuses[i]);
                 int h = (int) ((double) value / max * chartH);
                 int x = i * slot + slot / 6;
