@@ -2,7 +2,6 @@ package com.loansystem.model;
 
 import com.loansystem.util.StringUtil;
 
-/** Week 5 - Interface for objects that can print themselves in a report. */
 public interface Reportable {
     String toReportLine();
 
