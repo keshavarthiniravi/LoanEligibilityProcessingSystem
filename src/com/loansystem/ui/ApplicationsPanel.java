@@ -30,7 +30,6 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-/** Table of all applications with search, filter and detail view. */
 public class ApplicationsPanel extends JPanel implements Refreshable {
     private static final String[] COLUMNS = {"App ID", "Applicant", "Type", "Amount", "Tenure", "Rate", "EMI", "Status", "Submitted"};
 
@@ -197,7 +196,6 @@ public class ApplicationsPanel extends JPanel implements Refreshable {
         onSchedule.accept(app);
     }
 
-    /** Colours the status column. */
     private static class StatusRenderer extends DefaultTableCellRenderer {
         @Override
         public Component getTableCellRendererComponent(JTable t, Object value, boolean selected,
