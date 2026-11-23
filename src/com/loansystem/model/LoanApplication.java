@@ -4,7 +4,6 @@ import com.loansystem.util.StringUtil;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-/** Ties an Applicant to a Loan and tracks its processing status. */
 public class LoanApplication implements Reportable, Comparable<LoanApplication> {
     public static final DateTimeFormatter FMT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
@@ -12,7 +11,7 @@ public class LoanApplication implements Reportable, Comparable<LoanApplication> 
     private final Applicant applicant;
     private final Loan loan;
     private final LocalDateTime submittedAt;
-    private volatile ApplicationStatus status;   // updated by worker threads
+    private volatile ApplicationStatus status;   
     private volatile String remarks;
 
     public LoanApplication(String appId, Applicant applicant, Loan loan) {
@@ -41,7 +40,6 @@ public class LoanApplication implements Reportable, Comparable<LoanApplication> 
         this.remarks = StringUtil.sanitize(remarks);
     }
 
-    /** Higher credit score is processed first; ties are broken by submission time. */
     @Override
     public int compareTo(LoanApplication other) {
         int byScore = Integer.compare(other.applicant.getCreditScore(), applicant.getCreditScore());
