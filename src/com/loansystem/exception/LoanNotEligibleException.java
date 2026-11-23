@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/** Week 6 - Custom (checked) exception carrying every reason for rejection. */
 public class LoanNotEligibleException extends Exception {
     private final List<String> reasons;
 
