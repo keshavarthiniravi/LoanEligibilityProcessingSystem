@@ -4,7 +4,6 @@ import com.loansystem.exception.InvalidInputException;
 import com.loansystem.util.StringUtil;
 import java.util.List;
 
-/** Week 3 - Inheritance: EducationLoan extends Loan. */
 public class EducationLoan extends Loan {
     private String courseName;
 
@@ -36,7 +35,7 @@ public class EducationLoan extends Loan {
 
     @Override
     public double maxEligibleAmount(Applicant applicant) {
-        return Math.min(super.maxEligibleAmount(applicant), 7_500_000);   // cap Rs. 75 lakh
+        return Math.min(super.maxEligibleAmount(applicant), 7_500_000);  
     }
 
     @Override
