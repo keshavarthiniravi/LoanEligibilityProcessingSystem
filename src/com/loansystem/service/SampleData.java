@@ -5,13 +5,11 @@ import com.loansystem.model.Applicant;
 import com.loansystem.model.Loan;
 import com.loansystem.util.AppLogger;
 
-/** Adds demo applications (mix of approvals and rejections) - handy for screenshots. */
 public final class SampleData {
     private SampleData() { }
 
     public static int load(LoanService service) {
         Object[][] rows = {
-            // name, age, income, credit, phone, email, type, amount, months, extra
             {"Arun Kumar", 24, 35000, 745, "9876501234", "arun.kumar@mail.com", "Education", 600000, 84, "B.Tech Information Technology"},
             {"Priya Lakshmi", 34, 85000, 810, "9876505678", "priya.l@mail.com", "Home", 4500000, 240, "6000000"},
             {"Karthik Raja", 29, 28000, 620, "9876509012", "karthik.r@mail.com", "Personal", 400000, 36, "Wedding expenses"},
